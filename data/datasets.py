@@ -117,7 +117,7 @@ def loadpathslist(root,flag):
         for class_name in classes:
             imgpaths = os.listdir(root+'/'+class_name +'/'+flag+'/')
             for imgpath in imgpaths:
-                paths.append(root+'/'+class_name +'/'+flag+'/'+imgpath)
+                paths.append(root)
         return paths
     else:
         imgpaths = os.listdir(root+'/'+flag+'/')
