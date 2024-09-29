@@ -110,20 +110,16 @@ def custom_augment(img, opt):
     return Image.fromarray(img)
 
 
-def loadpathslist(root,flag):
-    classes =  os.listdir(root)
-    paths = []
-    if not '1_fake' in classes:
-        for class_name in classes:
-            imgpaths = os.listdir(root+'/'+class_name +'/'+flag+'/')
-            for imgpath in imgpaths:
-                paths.append(root)
-        return paths
-    else:
-        imgpaths = os.listdir(root+'/'+flag+'/')
-        for imgpath in imgpaths:
-            paths.append(root+'/'+flag+'/'+imgpath)
-        return paths
+def loadpathslist(root, flag):
+  classes = os.listdir(root)
+  paths = []
+  for class_name in classes:
+    img_dir = os.path.join(root, class_name, flag)
+    for filename in os.listdir(img_dir):
+      filepath = os.path.join(img_dir, filename)
+      if os.path.isfile(filepath) and not os.path.isHidden(filepath): # Check if it's a file and not hidden
+        paths.append(filepath)
+  return paths
 
 def process_img(img,opt,imgname,target):
     if opt.detect_method in ['CNNSpot','Gram']:
