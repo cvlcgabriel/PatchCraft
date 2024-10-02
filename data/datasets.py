@@ -117,7 +117,7 @@ def loadpathslist(root, flag):
     img_dir = os.path.join(root, class_name, flag)
     for filename in os.listdir(img_dir):
       filepath = os.path.join(img_dir, filename)
-      if os.path.isfile(filepath) and not os.path.isHidden(filepath): # Check if it's a file and not hidden
+      if os.path.isfile(filepath) and not os.path.basename(filepath).startswith('.'): # Check if it's a file and not hidden
         paths.append(filepath)
   return paths
 
