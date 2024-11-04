@@ -7,5 +7,5 @@ dataroot = '/content/PatchCraft/datasets/test'
 
 # list of synthesis algorithms
 print(dataroot)
-vals = ['stylegan']
+vals = ['stylegan', 'deepfake']
 
